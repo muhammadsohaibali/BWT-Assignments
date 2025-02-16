@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Registration Form</title>
+
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: rgb(238, 238, 238);
+        font-family: "Poppins", Arial, sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-container {
+        width: 90%;
+        max-width: 800px;
+        background-color: white;
+        margin: 20px;
+        padding: 40px;
+        border-radius: 12px;
+      }
+
+      .form-container-data {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+      }
+
+      .form-container .left-section {
+        flex: 2;
+        min-width: 300px;
+      }
+
+      .form-container .right-section {
+        flex: 1;
+        min-width: auto;
+      }
+
+      .input-container {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+      }
+
+      .input-container label {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 5px;
+        color: rgb(60, 60, 60);
+      }
+
+      .input-container input[type="text"],
+      .input-container select {
+        height: 40px;
+        font-size: 16px;
+        padding: 5px 10px;
+        border: 1px solid rgb(211, 211, 211);
+        border-radius: 8px;
+        outline: none;
+        transition: border-color 0.3s ease;
+      }
+
+      .input-container input[type="text"]:focus,
+      .input-container select:focus {
+        border-color: rgb(0, 190, 0);
+      }
+
+      .input-container input[type="radio"],
+      .input-container input[type="checkbox"] {
+        margin-right: 8px;
+      }
+
+      .input-container span,
+      p {
+        font-weight: 550;
+        margin-bottom: 5px;
+        color: rgb(60, 60, 60);
+      }
+
+      .hobbies-container p {
+        margin: 5px 0;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      button {
+        color: white;
+        width: 100%;
+        max-width: 200px;
+        height: 50px;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        background-color: rgb(0, 140, 255);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: rgb(0, 110, 220);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <form action="#" method="post" autocomplete="off">
+          <div class="form-container-data">
+            <div class="left-section">
+              <div class="input-container">
+                <label for="username_id">Username</label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username_id"
+                  placeholder="e.g usmanaffan"
+                />
+              </div>
+
+              <div class="input-container">
+                <label for="fname_id">First Name</label>
+                <input
+                  type="text"
+                  name="fname"
+                  id="fname_id"
+                  placeholder="e.g Usman"
+                />
+              </div>
+
+              <div class="input-container">
+                <label for="lname_id">Last Name</label>
+                <input
+                  type="text"
+                  name="lname"
+                  id="lname_id"
+                  placeholder="e.g Affan"
+                />
+              </div>
+
+              <div class="input-container">
+                <label for="city_id">City</label>
+                <select name="city" id="city_id">
+                  <option value="karachi">Karachi</option>
+                  <option value="islamabad">Islamabad</option>
+                  <option value="lahore">Lahore</option>
+                  <option value="faislabab">Faislabab</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="right-section">
+              <div class="input-container">
+                <label>Gender</label>
+                <span>
+                  <input name="gender" value="male" type="radio" />Male
+                </span>
+                <span>
+                  <input name="gender" value="female" type="radio" />Female
+                </span>
+              </div>
+
+              <div class="input-container">
+                <label>Hobbies</label>
+                <div class="hobbies-container">
+                  <p>
+                    <input
+                      type="checkbox"
+                      name="hobbies"
+                      id="hobbies_singing"
+                    />
+                    Singing
+                  </p>
+                  <p>
+                    <input
+                      type="checkbox"
+                      name="hobbies"
+                      id="hobbies_cooking"
+                    />
+                    Cooking
+                  </p>
+                  <p>
+                    <input
+                      type="checkbox"
+                      name="hobbies"
+                      id="hobbies_writing"
+                    />
+                    Writing
+                  </p>
+                  <p>
+                    <input
+                      type="checkbox"
+                      name="hobbies"
+                      id="hobbies_drawing"
+                    />
+                    Drawing
+                  </p>
+                  <p>
+                    <input
+                      type="checkbox"
+                      name="hobbies"
+                      id="hobbies_painting"
+                    />
+                    Painting
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-container">
+            <button type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
