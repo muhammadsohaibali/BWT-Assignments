@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+  </head>
+  <body>
+    <script>
+      let library = [
+        {
+          title: "Book 1",
+          author: "Author 1",
+          published: 2020,
+        },
+        {
+          title: "Book 2",
+          author: "Author 2",
+          published: 2021,
+        },
+        {
+          title: "Book 3",
+          author: "Author 3",
+          published: 2022,
+        },
+      ];
+
+      function searchBook(bookName) {
+        for (let i = 0; i < library.length; i++) {
+          if (library[i].title === bookName)
+            return `Title: ${library[i].title}\nAuthor: ${library[i].author}\nPublished: ${library[i].published}`;
+        }
+      }
+
+      function displayLibrary() {
+        for (let i = 0; i < library.length; i++) {
+          console.log(
+            `Title: ${library[i].title}\nAuthor: ${library[i].author}\nPublished: ${library[i].published}`
+          );
+        }
+      }
+
+      function addBook(title, author, published) {
+        library.push({
+          title: title,
+          author: author,
+          published: published,
+        });
+      }
+
+      function editBook(title, property, data) {
+        for (let i = 0; i < library.length; i++) {
+          if (library[i].title === title) library[i][property] = data;
+        }
+      }
+
+      function removeBook(title) {
+        for (let i = 0; i < library.length; i++) {
+          if (library[i].title === title) library.splice(i, 1);
+        }
+      }
+
+      displayLibrary();
+      console.log("=============================================");
+      addBook("System Design", "author 4", 2023);
+      console.log("ADDED BOOK - System Design");
+      displayLibrary();
+      console.log("=============================================");
+      console.log("Searched Book - System Design");
+      console.log(searchBook("System Design"));
+      console.log("=============================================");
+      editBook("Book 2", "published", 2025);
+      console.log("Edited Book - Book 2");
+      displayLibrary();
+      console.log("=============================================");
+    </script>
+  </body>
+</html>
