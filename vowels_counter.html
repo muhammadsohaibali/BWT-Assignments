@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vowel Counter</title>
+  </head>
+  <body>
+    <script>
+      const vowel_arr = ["a", "e", "i", "o", "u"];
+
+      function countVowel(string) {
+        let vowelCount = 0;
+        let consunantsCount = 0;
+        for (let char of string) {
+          if (vowel_arr.includes(char)) vowelCount++;
+          else if (!(char === " ")) consunantsCount++;
+        }
+        console.log(`Vowels: ${vowelCount}`);
+        console.log(`Consunants: ${consunantsCount}`);
+      }
+
+      countVowel("kaise ho");
+    </script>
+  </body>
+</html>

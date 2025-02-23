@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Truncate String</title>
+  </head>
+  <body>
+    <script>
+      function TruncateString(strg, len) {
+        if (!(typeof strg === "string")) return console.error("This Is not String");
+        if (strg.length > len) return `${strg.slice(0, len)}...`;
+        return strg;
+      }
+
+      console.log(TruncateString("kaise ho kutty", 5));
+    </script>
+  </body>
+</html>
