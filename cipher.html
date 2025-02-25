@@ -8,7 +8,7 @@
   <body>
     <!-- MY CODE -->
     <script>
-      const key = "GADERYPOLUKITVMZONSQRFHJ";
+      const key = "GADERYPOLUKITVMZXNSQRFHJ";
 
       function checkSibling(array, element) {
         if (
@@ -32,6 +32,7 @@
           keyArr.push(checkVar);
           countVar++;
         }
+
         var messageOut = [];
         for (let char of message) {
           if (keyArr.includes(char.toUpperCase()))
@@ -41,26 +42,26 @@
         return messageOut.join("");
       }
 
-      console.log(decodeEncodeCipher("This is secret message", key));
-      console.log(decodeEncodeCipher("vjkq kq qdcydv zdqqgad", key));
+      // console.log(decodeEncodeCipher("This is secret message", key));
+      // console.log(decodeEncodeCipher("vjkq kq qdcydv zdqqgad", key));
     </script>
     <!--  -->
 
     <!-- CHAT GPT COMPACT CODE -->
     <script>
-      console.log("Chat GPT's -",
-        (c = (s) =>
-          s.replace(
-            /\w/gi,
-            (x) =>
-              (m = Object.fromEntries(
-                [...(k = "GADERYPOLUKITVMZONSQRFHJ")].map((c, i, a) => [
-                  c,
-                  a[i ^ 1],
-                ])
-              ))[x.toUpperCase()]?.toLowerCase() || x
-          ))("This is secret message")
-      );
+      // console.log("Chat GPT's -",
+      //   (c = (s) =>
+      //     s.replace(
+      //       /\w/gi,
+      //       (x) =>
+      //         (m = Object.fromEntries(
+      //           [...(k = "GADERYPOLUKITVMZONSQRFHJ")].map((c, i, a) => [
+      //             c,
+      //             a[i ^ 1],
+      //           ])
+      //         ))[x.toUpperCase()]?.toLowerCase() || x
+      //     ))("This is secret message")
+      // );
     </script>
     <!--  -->
   </body>
