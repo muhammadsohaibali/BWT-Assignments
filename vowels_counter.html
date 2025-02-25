@@ -13,7 +13,7 @@
         let vowelCount = 0;
         let consunantsCount = 0;
         for (let char of string)
-          if (vowel_arr.includes(char)) vowelCount++;
+          if (vowel_arr.includes(char.toLowerCase())) vowelCount++;
           else if (!(char === " ")) consunantsCount++;
 
         console.log(`Vowels: ${vowelCount}`);
