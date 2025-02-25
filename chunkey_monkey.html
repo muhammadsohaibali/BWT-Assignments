@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chunky Monkey</title>
+  </head>
+  <body>
+    <script>
+      let testArr = [1, true, 3, 4, "5", 6, { age: 18 }, 8, 9, 10, 11];
+
+      function chunkyMonkey(arr, len) {
+        if (!Array.isArray(arr)) return "Invalid Array";
+        if (!len || len >= arr.length) return arr;
+        let funArr = [];
+        let resArray = [];
+        for (let copiedData of arr) funArr.push(copiedData);
+        for (let i = 0; i < Math.ceil(arr.length / len); i++)
+          resArray.push(funArr.splice(0, len));
+        return resArray;
+      }
+
+      const newArray = chunkyMonkey(testArr, 10);
+      console.log(newArray);
+    </script>
+  </body>
+</html>
