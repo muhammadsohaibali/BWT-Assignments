@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubble Sort</title>
+  </head>
+  <body>
+    <script>
+      // Random Array
+      let testArr = Array.from(
+        { length: 20 },
+        () => Math.floor(Math.random() * 100) + 10
+      );
+
+      // Sorting Function
+      function bubbleSort(arr) {
+        function calcAndRemMin(getMinArr) {
+          let minIs = 0;
+          for (let minVal of getMinArr) if (minVal > minIs) minIs = minVal;
+          copyArr.splice(copyArr.indexOf(minIs), 1);
+          return minIs;
+        }
+        let resArr = [];
+        var copyArr = [];
+
+        for (let newData of arr) copyArr.push(newData);
+        for (let data of arr) resArr.push(calcAndRemMin(copyArr));
+        return resArr;
+      }
+
+      // Print Output
+      console.log("\nUnsorted Array:\n\n", testArr.join(" "), "\n ");
+      console.log("\nSorted Array:\n\n", bubbleSort(testArr).join(" "), "\n ");
+    </script>
+  </body>
+</html>
