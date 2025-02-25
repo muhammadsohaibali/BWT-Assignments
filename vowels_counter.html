@@ -12,15 +12,15 @@
       function countVowel(string) {
         let vowelCount = 0;
         let consunantsCount = 0;
-        for (let char of string) {
+        for (let char of string)
           if (vowel_arr.includes(char)) vowelCount++;
           else if (!(char === " ")) consunantsCount++;
-        }
+
         console.log(`Vowels: ${vowelCount}`);
         console.log(`Consunants: ${consunantsCount}`);
       }
 
-      countVowel("kaise ho");
+      countVowel("This Is A String");
     </script>
   </body>
 </html>
