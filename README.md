@@ -12,9 +12,10 @@ The repository may contain assignments for the following technologies:
 
 - **HTML**
 - **CSS**
-- **JavaScript**
-- **Node.js**
-- **React**
+- **Javascript**
+- **Typescript**
+- **ReactJs**
+- **NodeJs**
 - **Databases**
 
 Each assignment is organized in its respective folder with a clear structure to ensure easy navigation.
