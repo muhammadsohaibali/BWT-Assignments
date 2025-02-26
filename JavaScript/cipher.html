@@ -8,11 +8,12 @@
 </head>
 
 <body>
-    <!-- MY CODE -->
     <script>
         const key = "GADERYPOLUKITVMZXNSQRFHJ";
-        
+
         function decodeEncodeCipher(message, keyString) {
+            if(!message || !keyString) return "Invalid Params"
+            if(!(typeof(message) === 'string')) return "Msg in not String"
             if (!(key.length % 2 === 0)) return "Invalid Key!";
             var keyArr = [];
             let countVar = 0;
@@ -43,25 +44,6 @@
         // console.log(decodeEncodeCipher("This is secret message", key));
         // console.log(decodeEncodeCipher("vjkq kq qdcydv zdqqgad", key));
     </script>
-    <!--  -->
-
-    <!-- CHAT GPT COMPACT CODE -->
-    <script>
-        // console.log("Chat GPT's -",
-        //   (c = (s) =>
-        //     s.replace(
-        //       /\w/gi,
-        //       (x) =>
-        //         (m = Object.fromEntries(
-        //           [...(k = "GADERYPOLUKITVMZONSQRFHJ")].map((c, i, a) => [
-        //             c,
-        //             a[i ^ 1],
-        //           ])
-        //         ))[x.toUpperCase()]?.toLowerCase() || x
-        //     ))("This is secret message")
-        // );
-    </script>
-    <!--  -->
 </body>
 
 </html>
