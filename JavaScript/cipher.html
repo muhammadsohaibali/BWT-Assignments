@@ -1,68 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cipher Encoder</title>
-  </head>
-  <body>
-    <!-- MY CODE -->
+</head>
+
+<body>
     <script>
-      const key = "GADERYPOLUKITVMZXNSQRFHJ";
+        const key = "GADERYPOLUKITVMZXNSQRFHJ";
 
-      function checkSibling(array, element) {
-        if (
-          array[array.indexOf(element.toUpperCase()) + 1] !== undefined &&
-          array[array.indexOf(element.toUpperCase()) + 1] !== "-"
-        )
-          return array[array.indexOf(element.toUpperCase()) + 1].toLowerCase();
-        if (
-          array[array.indexOf(element.toUpperCase()) + 1] === undefined ||
-          array[array.indexOf(element.toUpperCase()) + 1] === "-"
-        )
-          return array[array.indexOf(element.toUpperCase()) - 1].toLowerCase();
-      }
+        function decodeEncodeCipher(message, keyString) {
+            if(!message || !keyString) return "Invalid Params"
+            if(!(typeof(message) === 'string')) return "Msg in not String"
+            if (!(key.length % 2 === 0)) return "Invalid Key!";
+            var keyArr = [];
+            let countVar = 0;
+            for (let checkVar of keyString.toUpperCase()) {
+                if (countVar % 2 === 0 && !(keyArr.length === 0)) keyArr.push("-");
+                keyArr.push(checkVar);
+                countVar++;
+            }
 
-      function decodeEncodeCipher(message, keyString) {
-        if (!(key.length % 2 === 0)) return "Invalid Key!";
-        var keyArr = [];
-        let countVar = 0;
-        for (let checkVar of keyString) {
-          if (countVar % 2 === 0 && !(keyArr.length === 0)) keyArr.push("-");
-          keyArr.push(checkVar);
-          countVar++;
+            var messageOut = [];
+            for (let char of message) {
+                if (keyArr.includes(char.toUpperCase())) {
+                    let toPushVar;
+                    if (
+                        keyArr[keyArr.indexOf(char.toUpperCase()) + 1] !== undefined &&
+                        keyArr[keyArr.indexOf(char.toUpperCase()) + 1] !== "-"
+                    )
+                        toPushVar = keyArr[keyArr.indexOf(char.toUpperCase()) + 1].toLowerCase();
+                    else
+                        toPushVar = keyArr[keyArr.indexOf(char.toUpperCase()) - 1].toLowerCase();
+                    messageOut.push(toPushVar);
+                }
+                else messageOut.push(char);
+            }
+            return messageOut.join("");
         }
 
-        var messageOut = [];
-        for (let char of message) {
-          if (keyArr.includes(char.toUpperCase()))
-            messageOut.push(checkSibling(keyArr, char));
-          else messageOut.push(char);
-        }
-        return messageOut.join("");
-      }
-
-      // console.log(decodeEncodeCipher("This is secret message", key));
-      // console.log(decodeEncodeCipher("vjkq kq qdcydv zdqqgad", key));
+        // console.log(decodeEncodeCipher("This is secret message", key));
+        // console.log(decodeEncodeCipher("vjkq kq qdcydv zdqqgad", key));
     </script>
-    <!--  -->
+</body>
 
-    <!-- CHAT GPT COMPACT CODE -->
-    <script>
-      // console.log("Chat GPT's -",
-      //   (c = (s) =>
-      //     s.replace(
-      //       /\w/gi,
-      //       (x) =>
-      //         (m = Object.fromEntries(
-      //           [...(k = "GADERYPOLUKITVMZONSQRFHJ")].map((c, i, a) => [
-      //             c,
-      //             a[i ^ 1],
-      //           ])
-      //         ))[x.toUpperCase()]?.toLowerCase() || x
-      //     ))("This is secret message")
-      // );
-    </script>
-    <!--  -->
-  </body>
 </html>
