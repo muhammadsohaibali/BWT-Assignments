@@ -122,7 +122,6 @@ h1 {
   display: flex;
   background-color: rgb(240, 240, 240);
   border: 1px solid rgb(170, 170, 170);
-  /* box-shadow: 0 0 2px rgba(0, 0, 0, 0.3); */
   color: rgb(66, 66, 66);
   padding: 5px 0;
   border-radius: 8px;
@@ -134,4 +133,52 @@ h1 {
 .add-option:hover {
   background-color: rgb(231, 231, 231);
   color: rgb(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 5px 0 50px 0;
+  }
+
+  .question-container {
+    width: 90%;
+    gap: 15px;
+  }
+
+  .question-box {
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .question-span {
+    font-size: 0.9em;
+  }
+
+  .quiz-list-box {
+    padding: 10px;
+  }
+
+  .delete-btn {
+    padding: 6px 15px;
+    font-size: 0.8em;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .list-quiz-btn {
+    padding: 8px 20px;
+    font-size: 0.9em;
+  }
+
+  .add-option {
+    font-size: 16px;
+    padding: 4px 0;
+  }
 }
