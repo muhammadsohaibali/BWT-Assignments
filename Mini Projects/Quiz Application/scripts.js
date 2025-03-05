@@ -1,10 +1,7 @@
 const j = (i, k) => document.getElementById(i).style.display = k;
 const scq = () => { j('cq', 'flex'), j('quiz-answers', 'none'), j('quiz-list', 'none'), j('quiz-result', 'none'); };
 const slq = () => {
-  j('cq', 'none'),
-    j('quiz-list', 'flex'),
-    j('quiz-answers', 'none'),
-    j('quiz-result', 'none');
+  j('cq', 'none'), j('quiz-list', 'flex'), j('quiz-answers', 'none'), j('quiz-result', 'none');
   document.getElementById('list_ref').parentElement.innerHTML = `
               <div onclick="lq()" id="list_ref" class="quiz-list-box" style="background-color: rgb(250, 250, 250);border: 2px white solid;cursor: pointer">
                 <span style="margin: 0 auto;" class="question-span">Refresh List</span>
@@ -25,7 +22,6 @@ const ma = (v) => {
         })
     });
 }
-
 const aq = (e) => {
   let d = document.createElement(`div`);
   d.className = "question-box";
@@ -43,7 +39,6 @@ const aq = (e) => {
   ev(".answer", () => ma("cq"));
   ev(".question", () => ma("cq"));
 };
-
 const ao = (e) => {
   let c = document.createElement(`input`);
   c.className = "answer";
@@ -56,7 +51,6 @@ const ao = (e) => {
   ev(".answer", () => ma("cq"));
   ev(".question", () => ma("cq"));
 };
-
 const cq = () => {
   const [l, quiz] = [localStorage, document.getElementById('cq')];
   let [qbg, qbx] = [quiz.children, quiz.children[2].children];
@@ -66,7 +60,6 @@ const cq = () => {
     !Object.keys(l).includes(inp.value) ? (l.setItem(inp.value, JSON.stringify(q)), inp.value = '', [...qbx].slice(0, -1).forEach((a) => [...a.children].slice(0, -1).forEach((b) => b.value = ''))) :
       (Object.assign(inp, { placeholder: "Name Already Exists", value: "" }), inp.focus());
 }
-
 const lq = () => {
   let [l, n] = [localStorage, document.getElementById('quiz-list').children];
   [...n][1].innerHTML = '<div id="list_ref" onclick="lq()" class="quiz-list-box" style="background-color: rgb(250, 250, 250);border: 2px white solid;cursor: pointer"><span style="margin: 0 auto;" class="question-span">Click To Refresh List</span></div>';
@@ -82,7 +75,6 @@ const lq = () => {
     [...n][1].append(p)
   })) : ([...n][1].innerHTML = '<div id="list_ref" onclick="lq()" class="quiz-list-box" style="background-color: rgb(255, 218, 218);border: 2px white solid;cursor: auto"><span style="margin: 0 auto;" class="question-span">No Quiz Saved <a style="text-decoration: underline; color: blue;cursor:pointer" onclick="scq()">Create One</a></span></div>')
 }
-
 const dlt = (e, t) => {
   console.log(e, t)
   e.preventDefault();
@@ -90,7 +82,6 @@ const dlt = (e, t) => {
   t.parentElement.remove();
   localStorage.removeItem(t.parentElement.children[0].textContent)
 }
-
 const loq = (qu) => {
   j('cq', 'none'), j('quiz-list', 'none'), j('quiz-answers', 'flex'), j('quiz-result', 'none');
   let [qbx, cu, cl] = [document.getElementById('quiz-answers').children[1], JSON.parse(localStorage.getItem(qu)), document.createElement];
@@ -111,7 +102,6 @@ const loq = (qu) => {
   });
   sessionStorage.setItem('cur', qu);
 }
-
 const saq = (w) => {
   const [s, l] = [sessionStorage.getItem('cur'), localStorage];
   sessionStorage.removeItem('cur');
@@ -122,12 +112,12 @@ const saq = (w) => {
     .map((v, k) => v.answer === JSON.parse(l.getItem(s))[k].correct && cl(JSON.parse(l.getItem(s)).length));
   ru(co, lo ? lo : JSON.parse(localStorage.getItem('Maths Test')).length, s);
 }
-
 const ru = (c, t, s) => {
   j('cq', 'none'), j('quiz-answers', 'none'), j('quiz-list', 'none'), j('quiz-result', 'flex');
-  let p = Math.round((c / t) * 100);
-  let r = p >= 50 ? `Passed` : `Failed`;
-  document.getElementById('quiz-result').innerHTML = `
+  let [p, e] = [Math.round((c / t) * 100), document.getElementById('quiz-result')];
+  let [r, j] = [p >= 50 ? `Passed` : `Failed`, e.style];
+  [j.display, j.justifyContent, j.alignItems] = ['flex', 'center', 'center'];
+  e.innerHTML = `
     <div style="text-align:center; width: 400px; height: 250px ;padding:20px; border: 2px solid #ccc; border-radius: 10px; background: rgba(255, 255, 255, 0.8);">
       <h2 style="color: #333;">Quiz Result</h2>
       <p>You have scored <strong>${c} / ${t}</strong></p>
@@ -136,12 +126,7 @@ const ru = (c, t, s) => {
       <button onclick="${r === 'Passed' ? 'slq()' : `loq('${s}')`}" style="padding: 10px 20px; border: none; background: #007BFF; color: white; border-radius: 5px; cursor: pointer;">${r === 'Passed' ? 'Quiz List' : 'Try Again'}</button>
     </div>
   `;
-
-  document.getElementById('quiz-result').style.display = 'flex';
-  document.getElementById('quiz-result').style.justifyContent = 'center';
-  document.getElementById('quiz-result').style.alignItems = 'center';
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   ev(".answer", () => ma("cq"));
   ev(".question", () => ma("cq"));
