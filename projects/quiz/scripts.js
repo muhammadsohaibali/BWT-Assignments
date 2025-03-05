@@ -129,4 +129,3 @@ document.addEventListener("DOMContentLoaded", () => {
   ev(".answer", () => ma("cq"));
   ev(".question", () => ma("cq"));
 });
-
