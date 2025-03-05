@@ -32,7 +32,7 @@ This repository serves as a central hub for my coursework, providing a structure
 
 ## Featured Projects
 
-* **[Quiz App](https://github.com/muhammadsohaibali/BWT-Assignments/tree/main/projects/quiz):** A dynamic quiz application inspired by Google Forms, allowing users to create and participate in interactive quizzes.
+* **Quiz App:** A dynamic quiz application inspired by Google Forms.  Try it out [live](https://muhammadsohaibali.github.io/BWT-Assignments/projects/quiz/) or explore the [source code](https://github.com/muhammadsohaibali/BWT-Assignments/tree/main/projects/quiz).
 
 ## About Me
 
