@@ -16,7 +16,6 @@ This repository contains assignments and projects related to:
 - **TypeScript:** Assignments and projects utilizing TypeScript for type safety.
 - **Express.js:** Backend development assignments using the Express.js framework.
 - **MongoDB:** Database assignments and projects involving MongoDB.
-- **Projects:** Standalone applications and larger projects.
 
 ## JavaScript Assignments
 
