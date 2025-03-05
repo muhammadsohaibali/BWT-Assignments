@@ -57,7 +57,7 @@ const cq = () => {
   let inp = qbg[1].children[0].children[0];
   const q = [...Array(qbx.length - 1)].map((_, i) => ({ question: qbx[i].children[0].value, answer: [...qbx[i].children].slice(2, -1).map(t => t.value), correct: ([...qbx[i].children].slice(2, -1).filter(x => x.value === qbx[i].children[1].value && (correct = x.value)), correct) }));
   !inp.value ? (Object.assign(inp, { placeholder: "Please Name The Quiz", value: "" }), inp.focus()) :
-    !Object.keys(l).includes(inp.value) ? (l.setItem(inp.value, JSON.stringify(q)), inp.value = '', [...qbx].slice(0, -1).forEach((a) => [...a.children].slice(0, -1).forEach((b) => b.value = ''))) :
+    !Object.keys(l).includes(inp.value) ? (l.setItem(inp.value, JSON.stringify(q)), inp.value = '', [...qbx].slice(0, -1).forEach((a) => [...a.children].slice(0, -1).forEach((b) => b.value = '')), slq()) :
       (Object.assign(inp, { placeholder: "Name Already Exists", value: "" }), inp.focus());
 }
 const lq = () => {
@@ -67,7 +67,6 @@ const lq = () => {
     let p = document.createElement('div');
     p.className = 'quiz-list-box';
     p.onclick = () => loq(l.key(i));
-    console.log(l.key(i))
     p.innerHTML = `
           <span style='padding-left:20px' class="question-span">${i + 1}) ${l.key(i)}</span>
           <span class="delete-btn" onclick="dlt(event, this)">Delete</span>
@@ -76,7 +75,6 @@ const lq = () => {
   })) : ([...n][1].innerHTML = '<div id="list_ref" onclick="lq()" class="quiz-list-box" style="background-color: rgb(255, 218, 218);border: 2px white solid;cursor: auto"><span style="margin: 0 auto;" class="question-span">No Quiz Saved <a style="text-decoration: underline; color: blue;cursor:pointer" onclick="scq()">Create One</a></span></div>')
 }
 const dlt = (e, t) => {
-  console.log(e, t)
   e.preventDefault();
   e.stopImmediatePropagation();
   t.parentElement.remove();
@@ -106,17 +104,17 @@ const saq = (w) => {
   const [s, l] = [sessionStorage.getItem('cur'), localStorage];
   sessionStorage.removeItem('cur');
   let [co, lo] = [0, 0];
-  const cl = (v) => { ++co, lo = v, console.log(co, v) }
+  const cl = (v) => { ++co, lo = v }
   [...document.querySelectorAll('input[type="radio"]:checked')]
     .map(e => ({ question: e.name, answer: e.value }))
     .map((v, k) => v.answer === JSON.parse(l.getItem(s))[k].correct && cl(JSON.parse(l.getItem(s)).length));
-  ru(co, lo ? lo : JSON.parse(localStorage.getItem('Maths Test')).length, s);
+  ru(co, lo !== 0 ? lo : JSON.parse(localStorage.getItem(s)).length, s);
 }
 const ru = (c, t, s) => {
   j('cq', 'none'), j('quiz-answers', 'none'), j('quiz-list', 'none'), j('quiz-result', 'flex');
   let [p, e] = [Math.round((c / t) * 100), document.getElementById('quiz-result')];
-  let [r, j] = [p >= 50 ? `Passed` : `Failed`, e.style];
-  [j.display, j.justifyContent, j.alignItems] = ['flex', 'center', 'center'];
+  let [r, g] = [p >= 50 ? `Passed` : `Failed`, e.style];
+  [g.display, g.justifyContent, g.alignItems] = ['flex', 'center', 'center'];
   e.innerHTML = `
     <div style="text-align:center; width: 400px; height: 250px ;padding:20px; border: 2px solid #ccc; border-radius: 10px; background: rgba(255, 255, 255, 0.8);">
       <h2 style="color: #333;">Quiz Result</h2>
