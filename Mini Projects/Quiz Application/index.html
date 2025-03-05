@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable = no"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js"></script>
+    <title>Quiz Application</title>
+  </head>
+  <body>
+    <!-- CREATE QUIZ -->
+    <div id="cq" class="container create-q">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+          margin: 20px 0;
+        "
+      >
+        <span class="list-quiz-btn" onclick="slq()">List Quiz</span>
+        <h1>Create Your Quiz</h1>
+      </div>
+
+      <div class="question-container" style="margin-bottom: 20px">
+        <div class="question-box">
+          <input
+            type="text"
+            placeholder="Name Your Quiz"
+            style="border: 2px solid green; outline: none"
+          />
+        </div>
+      </div>
+      <div class="question-container">
+        <div class="question-box">
+          <input
+            type="text"
+            placeholder="Enter your question"
+            class="question"
+          />
+          <input
+            type="text" style="border: 1px solid rgb(177, 0, 0);"
+            placeholder="Enter Correct Option Here Also"
+            class="question"
+          />
+          <input class="answer" type="text" placeholder="Answer 1" />
+          <input class="answer" type="text" placeholder="Answer 2" />
+          <span onclick="ao(this)" class="add-option">+</span>
+        </div>
+        <div class="question-box">
+          <span onclick="aq(this)" class="add-option">+</span>
+        </div>
+      </div>
+      <span
+        class="list-quiz-btn"
+        style="margin-top: 20px; margin-bottom: 20px"
+        onclick="cq()"
+        >Save Quiz</span
+      >
+    </div>
+
+    <div id="quiz-list" class="container" style="display: none">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+          margin: 20px 0;
+        "
+      >
+        <span class="list-quiz-btn" onclick="scq()">Create Quiz</span>
+        <h1>Quiz list</h1>
+      </div>
+      <div class="question-container">
+        <div onclick="lq()" id="list_ref" class="quiz-list-box" style="background-color: rgb(250, 250, 250);border: 2px white solid;cursor: pointer">
+          <span style="margin: 0 auto;" class="question-span">Refresh List</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="quiz-answers" class="container" style="display: none">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+          margin: 20px 0;
+        "
+      >
+        <span class="list-quiz-btn" onclick="switchCreateQuiz()"
+          >Create Quiz</span
+        >
+        <h1>Answer Following Questions</h1>
+      </div>
+
+      <div class="question-container">
+        <!-- Question Box Start -->
+        <div class="question-box">
+          <span class="question">What is the capital of France?</span>
+          <div class="answers" style="display: flex; flex-direction: column">
+            <label><input type="radio" name="q1" /> Paris</label>
+            <label><input type="radio" name="q1" /> London</label>
+            <label><input type="radio" name="q1" /> Berlin</label>
+            <label><input type="radio" name="q1" /> Rome</label>
+          </div>
+        </div>
+
+        <div class="question-box">
+          <span class="question">What is 2 + 2?</span>
+          <div class="answers" style="display: flex; flex-direction: column">
+            <label><input type="radio" name="q2" /> 3</label>
+            <label><input type="radio" name="q2" /> 4</label>
+            <label><input type="radio" name="q2" /> 5</label>
+            <label><input type="radio" name="q2" /> 6</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
