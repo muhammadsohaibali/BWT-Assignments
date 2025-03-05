@@ -34,8 +34,6 @@ This repository serves as a central hub for my coursework, providing a structure
 
 * **[Quiz App](https://github.com/muhammadsohaibali/BWT-Assignments/tree/main/projects/quiz):** A dynamic quiz application inspired by Google Forms, allowing users to create and participate in interactive quizzes.
 
-**(Add more projects as you complete them.)**
-
 ## About Me
 
 I'm Sohaib Ali, a passionate web development student at Baitussalam TechPark. This repository reflects my dedication to continuous learning and building innovative web solutions.
