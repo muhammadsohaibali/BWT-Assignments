@@ -78,7 +78,7 @@ const dlt = (e, t) => {
   e.preventDefault();
   e.stopImmediatePropagation();
   t.parentElement.remove();
-  localStorage.removeItem(t.parentElement.children[0].textContent)
+  localStorage.removeItem(t.parentElement.children[0].textContent.slice(3).trim())
 }
 const loq = (qu) => {
   j('cq', 'none'), j('quiz-list', 'none'), j('quiz-answers', 'flex'), j('quiz-result', 'none');
