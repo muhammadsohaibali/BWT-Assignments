@@ -8,7 +8,7 @@ const slq = () => {
               </div>
               `;
   lq();
-};
+}
 const ev = (a, b) => document.querySelectorAll(a).forEach(e => e.oninput = b);
 const ma = (v) => {
   [...document.getElementById(v).children[2].children]
@@ -50,20 +50,22 @@ const ao = (e) => {
   e.parentElement.insertBefore(c, e.parentElement.lastElementChild);
   ev(".answer", () => ma("cq"));
   ev(".question", () => ma("cq"));
-};
+}
 const cq = () => {
   // Create Quiz
   const [l, quiz] = [localStorage, document.getElementById('cq')];
   let [qbg, qbx] = [quiz.children, quiz.children[2].children];
   let inp = qbg[1].children[0].children[0];
-  const q = [...Array(qbx.length - 1)].map((_, i) => ({ question: qbx[i].children[0].value, answer: [...qbx[i].children].slice(2, -1).map(t => t.value), correct: ([...qbx[i].children].slice(2, -1).filter(x => x.value === qbx[i].children[1].value && (correct = x.value)), correct) }));
+  const q = [...Array(qbx.length - 1)].map((_, i) => ({
+    question: qbx[i].children[0].value, answer: [...qbx[i].children].slice(2, -1)
+      .map(t => t.value), correct: ([...qbx[i].children].slice(2, -1).filter(x => x.value === qbx[i].children[1].value && (correct = x.value)), correct)
+  }));
   !inp.value ? (Object.assign(inp, { placeholder: "Please Name The Quiz", value: "" }), inp.focus()) :
-    !Object.keys(l).includes(inp.value) ? (addQuiz(inp.value, JSON.stringify(q)), inp.value = '', [...qbx].slice(0, -1).forEach((a) => [...a.children].slice(0, -1).forEach((b) => b.value = '')), slq()) :
+    !Object.keys(l).includes(inp.value) ? (a(inp.value, JSON.stringify(q)), inp.value = '', [...qbx]
+      .slice(0, -1).forEach((a) => [...a.children].slice(0, -1).forEach((b) => b.value = '')), slq()) :
       (Object.assign(inp, { placeholder: "Name Already Exists", value: "" }), inp.focus());
 }
-
 const lq = async () => {
-  // List Quiz
   let [l, n] = [localStorage, document.getElementById('quiz-list').children];
   [...n][1].innerHTML = '<div id="list_ref" onclick="lq()" class="quiz-list-box" style="background-color: rgb(250, 250, 250);border: 2px white solid;cursor: pointer"><span style="margin: 0 auto;" class="question-span">Click To Refresh List</span></div>';
 
@@ -81,11 +83,19 @@ const lq = async () => {
   })
 }
 const dlt = (e, t) => {
-  // Delete Quiz
   e.preventDefault();
   e.stopImmediatePropagation();
   t.parentElement.remove();
-  localStorage.removeItem(t.parentElement.children[0].textContent.slice(3).trim())
+  fetch("http://localhost:3000/quiz")
+    .then(res => res.json())
+    .then(data =>
+      fetch(`http://localhost:3000/quiz/${data.find(x => x.title === t.parentElement.children[0].textContent.slice(3).trim()).id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      })
+    )
 }
 const loq = async (qu) => {
   j('cq', 'none'), j('quiz-list', 'none'), j('quiz-answers', 'flex'), j('quiz-result', 'none');
@@ -97,10 +107,8 @@ const loq = async (qu) => {
       JSON.parse(x.data).forEach(m => {
         let d = document.createElement('div');
         d.className = 'question-box';
-        d.innerHTML = `
-                <span class="question" style='font-weight:bold'>${x.data.indexOf(m) + 1})  ${m.question}:</span>
-                <div class="answers" style="display: flex;gap:10px; flex-direction: column"></div>
-            `;
+        d.innerHTML = `<span class="question" style='font-weight:bold'>${x.data.indexOf(m) + 1})  ${m.question}:</span>
+                      <div class="answers" style="display: flex;gap:10px; flex-direction: column"></div>`;
         qbx.append(d);
         m.answer.forEach(n => {
           let f = document.createElement('label');
@@ -113,32 +121,20 @@ const loq = async (qu) => {
   })
 }
 const saq = async (w) => {
-  // Matches Answers
-  const [s, l] = [sessionStorage.getItem('cur'), localStorage];
+  let s = sessionStorage.getItem('cur');
+  let [co, len, dat] = [0, JSON.parse((await (await fetch("http://localhost:3000/quiz")).json())
+    .find(x => x.title === s) ? (await (await fetch("http://localhost:3000/quiz")).json()).find(x => x.title === s).data : '[]')
+    .map(x => ({ question: x.question, answer: x.correct })), [...document.querySelectorAll('input[type="radio"]:checked')]
+      .map(e => ({ question: e.name, answer: e.value }))];
+  if (dat.length !== len.length) return;
   sessionStorage.removeItem('cur');
-  let [co, lo] = [0, 0];
-
-  const cl = (v) => { ++co, lo = v }
-
-  [...document.querySelectorAll('input[type="radio"]:checked')]
-    .map(e => ({ question: e.name, answer: e.value }))
-    .map(async (v, k) => v.answer === JSON.parse((await (await fetch("http://localhost:3000/quiz")).json()).map((x, i) => {
-      if (x.title === s) { x.data }
-    }).find(x => x !== undefined))[k].correct && cl(JSON.parse((await (await fetch("http://localhost:3000/quiz")).json()).map((x, i) => {
-      if (x.title === s) { x.data }
-    }).find(x => x !== undefined)).length
-    ));
-
-  console.log(s)
-  console.log(co)
-
-  ru(co, lo !== 0 ? lo : JSON.parse((await (await fetch("http://localhost:3000/quiz")).json()).map((x, i) => {
-    if (x.title === s) { return x.data }
-  }).find(x => x !== undefined)).length, s);
+  const cm = (d, u) => {
+    d.forEach((obj, index) => { if (u[index] && obj.question === u[index].question && obj.answer === u[index].answer) co++ });
+    ru(co, len.length, s);
+  }
+  cm(dat, len);
 }
 const ru = (c, t, s) => {
-  console.log(c, t, s)
-  // Check / Result Quiz
   j('cq', 'none'), j('quiz-answers', 'none'), j('quiz-list', 'none'), j('quiz-result', 'flex');
   let [p, e] = [Math.round((c / t) * 100), document.getElementById('quiz-result')];
   let [r, g] = [p >= 50 ? `Passed` : `Failed`, e.style];
@@ -153,13 +149,13 @@ const ru = (c, t, s) => {
     </div>
   `;
 }
+
 document.addEventListener("DOMContentLoaded", () => {
   ev(".answer", () => ma("cq"));
   ev(".question", () => ma("cq"));
 });
 
-// ============== USING JSON-SERVER ==============
-const addQuiz = async (t, q) => {
+const a = async (t, q) => {
   await fetch("http://localhost:3000/quiz", {
     method: "POST",
     headers: {
