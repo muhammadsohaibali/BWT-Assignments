@@ -1,0 +1,19 @@
+{
+  "quiz": [
+    {
+      "id": 1,
+      "title": "test",
+      "data": "[{\"question\":\"ans crr\",\"answer\":[\"ans crr 2\",\"ans crrans crr\"],\"correct\":\"ans crr 2\"},{\"question\":\"vans crr\",\"answer\":[\"ans crr\",\"ans crrh\"],\"correct\":\"ans crr\"}]"
+    },
+    {
+      "id": 2,
+      "title": "vsadva",
+      "data": "[{\"question\":\"dv23av2\",\"answer\":[\"aev\",\"a2ev\",\"ae2v2a\",\"eva2ev2\"],\"correct\":\"aev\"},{\"question\":\"ave\",\"answer\":[\"2av\",\"adv\"],\"correct\":\"2av\"}]"
+    },
+    {
+      "id": 3,
+      "title": "dsad",
+      "data": "[{\"question\":\"vadv2a\",\"answer\":[\"2av\",\"da2v\"],\"correct\":\"2av\"}]"
+    }
+  ]
+}
