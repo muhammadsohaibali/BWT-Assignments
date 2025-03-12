@@ -133,7 +133,7 @@ const saq = async (w) => {
     ru(co, len.length, s);
   }
   cm(dat, len);
-} 
+}
 const ru = (c, t, s) => {
   j('cq', 'none'), j('quiz-answers', 'none'), j('quiz-list', 'none'), j('quiz-result', 'flex');
   let [p, e] = [Math.round((c / t) * 100), document.getElementById('quiz-result')];
