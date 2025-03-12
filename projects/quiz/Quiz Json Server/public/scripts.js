@@ -61,7 +61,7 @@ const cq = () => {
       .map(t => t.value), correct: ([...qbx[i].children].slice(2, -1).filter(x => x.value === qbx[i].children[1].value && (correct = x.value)), correct)
   }));
   !inp.value ? (Object.assign(inp, { placeholder: "Please Name The Quiz", value: "" }), inp.focus()) :
-    !Object.keys(l).includes(inp.value) ? (a(inp.value, JSON.stringify(q)), inp.value = '', [...qbx]
+    !Object.keys(l).includes(inp.value) ? (a(inp.value, q), inp.value = '', [...qbx]
       .slice(0, -1).forEach((a) => [...a.children].slice(0, -1).forEach((b) => b.value = '')), slq()) :
       (Object.assign(inp, { placeholder: "Name Already Exists", value: "" }), inp.focus());
 }
@@ -104,7 +104,7 @@ const loq = async (qu) => {
 
   (await (await fetch("http://localhost:3000/quiz")).json()).forEach((x, i) => {
     if (x.title === qu) {
-      JSON.parse(x.data).forEach(m => {
+      x.data.forEach(m => {
         let d = document.createElement('div');
         d.className = 'question-box';
         d.innerHTML = `<span class="question" style='font-weight:bold'>${x.data.indexOf(m) + 1})  ${m.question}:</span>
@@ -122,16 +122,19 @@ const loq = async (qu) => {
 }
 const saq = async (w) => {
   let s = sessionStorage.getItem('cur');
-  let [co, len, dat] = [0, JSON.parse((await (await fetch("http://localhost:3000/quiz")).json())
-    .find(x => x.title === s) ? (await (await fetch("http://localhost:3000/quiz")).json()).find(x => x.title === s).data : '[]')
-    .map(x => ({ question: x.question, answer: x.correct })), [...document.querySelectorAll('input[type="radio"]:checked')]
-      .map(e => ({ question: e.name, answer: e.value }))];
+  let [co, len, dat] = [0, (await (await fetch("http://localhost:3000/quiz")).json())
+    .find(x => x.title === s) ? (await (await fetch("http://localhost:3000/quiz")).json()).find(x => x.title === s).data : '[]'
+      .map(x => ({ question: x.question, answer: x.correct })), [...document.querySelectorAll('input[type="radio"]:checked')]
+        .map(e => ({ question: e.name, answer: e.value }))];
   if (dat.length !== len.length) return;
   sessionStorage.removeItem('cur');
   const cm = (d, u) => {
-    d.forEach((obj, index) => { if (u[index] && obj.question === u[index].question && obj.answer === u[index].answer) co++ });
-    ru(co, len.length, s);
-  }
+    d.forEach((obj, index) => {
+      if (u[index] && obj.question === u[index].question && obj.answer === u[index].correct)
+        co++;
+    });
+    ru(co, d.length, s);
+  };
   cm(dat, len);
 }
 const ru = (c, t, s) => {
