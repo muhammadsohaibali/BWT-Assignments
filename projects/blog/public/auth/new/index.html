@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/assets/css/user.css">
+
+    <title>Register - Blogs</title>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Register</h2>
+        <div class="input-container">
+            <input type="text" id="username" placeholder="Username" autocomplete="off" required>
+        </div>
+        <div class="input-container">
+            <input type="password" id="password" placeholder="Password" autocomplete="off" required>
+        </div>
+        <span>Already Have An Account? <a href="/auth">Sign In</a></span>
+        <button data-auth="register" id="submit">Register</button>
+    </div>
+
+    <script> if (localStorage.getItem('user')) location.href = '/'; </script>
+    <script src="/assets/js/user.js"></script>
+</body>
+
+</html>

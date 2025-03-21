@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no" />
+  <link rel="stylesheet" href="../../assets/styles.css" />
+  <title>Quiz Application</title>
+</head>
+
+<body>
+  <div id="quiz-answers" class="container">
+    <div style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+          margin: 20px 0;
+        ">
+      <div style="display: flex; flex-direction: row; gap: 10px;">
+        <span class="list-quiz-btn" onclick="slq()">Quiz List</span>
+        <h1>Answer Following Questions</h1>
+      </div>
+      <input type="text" id="user_email" placeholder="Enter Email">
+    </div>
+
+    <div class="question-container">
+      <!-- Question Box Start -->
+
+      <!--  -->
+    </div>
+    <span class="list-quiz-btn" style="margin-top: 20px; margin-bottom: 20px" onclick="redirRes(document.getElementById('user_email').value,
+      [...document.querySelectorAll(`input[type='radio']:checked`)].map(e => ({ question: e.name, answer: e.value }))
+    )">Submit Quiz</span>
+  </div>
+
+  <script src="../../assets/scripts.js"></script>
+  <script>
+    console.log(loq, localStorage.getItem('quiz'))
+    loq(localStorage.getItem('quiz'));
+  </script>
+</body>
+
+</html>

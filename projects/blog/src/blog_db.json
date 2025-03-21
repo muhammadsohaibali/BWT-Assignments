@@ -1,0 +1,135 @@
+{
+  "blogs": [
+    {
+      "id": 3,
+      "title": "Getting Started with Node.js",
+      "author": "Alex Johnson",
+      "date": "March 2, 2025",
+      "timestamp": "2025-03-23T10:15:00Z",
+      "mainText": "Kickstart your backend journey by exploring Node.js fundamentals and why it’s a must-have tool for modern developers.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Node.js is a powerful JavaScript runtime built on Chrome's V8 engine. It allows developers to build scalable network applications."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why Node.js?"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Asynchronous and event-driven",
+            "Great for building APIs",
+            "Huge npm ecosystem"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "CSS Grid vs Flexbox: Which One to Use?",
+      "author": "Emily Clark",
+      "date": "March 16, 2025",
+      "timestamp": "2025-03-23T13:30:00Z",
+      "mainText": "Confused about CSS layouts? Let’s break down Grid vs Flexbox and help you decide the perfect tool for your next design.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "CSS Grid and Flexbox are both popular layout models, but they have different use cases."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "CSS Grid"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Best for two-dimensional layouts",
+            "Aligns items into rows and columns",
+            "Perfect for complex grid-based designs"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Flexbox"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ideal for one-dimensional layouts",
+            "Simplifies alignment of items in a row or column",
+            "Great for navbars and lists"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Boost Your Productivity as a Developer",
+      "author": "Michael Lee",
+      "date": "March 30, 2025",
+      "timestamp": "2025-03-23T17:45:00Z",
+      "mainText": "Want to code faster and smarter? Check out practical productivity hacks tailored for developers like you.",
+      "content": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "1. Use Code Snippets"
+        },
+        {
+          "type": "paragraph",
+          "text": "Code snippets can help you speed up your workflow by reducing repetitive tasks."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "2. Automate with Tools"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Prettier for code formatting",
+            "ESLint for linting",
+            "Git Hooks for automation"
+          ]
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "sohaib",
+      "password": "1234"
+    },
+    {
+      "id": "2",
+      "username": "ali",
+      "password": "4567"
+    },
+    {
+      "id": "3",
+      "username": "ahmed",
+      "password": "7890"
+    },
+    {
+      "id": "4",
+      "username": "hassan",
+      "password": "abcd"
+    },
+    {
+      "id": "5",
+      "username": "usman",
+      "password": "efgh"
+    },
+    {
+      "id": "6",
+      "username": "waleed",
+      "password": "ijkl"
+    }
+  ]
+}
